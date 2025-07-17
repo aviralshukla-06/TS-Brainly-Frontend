@@ -5,7 +5,8 @@ export interface SizeStyles {
     size: Size,
     open?: boolean
     contentId?: number;
-    onDeleteSuccess?: () => void;
+    onClose?: () => void;
+    onClick?: () => void;
 }
 
 export const sizeClasses: Record<Size, string> = {

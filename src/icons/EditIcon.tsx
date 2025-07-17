@@ -1,9 +1,23 @@
 // icon.tsx (or PlusIcon.tsx)
 import { sizeClasses, type SizeStyles } from "./IconSize";
+// import axios from "axios";
+// import { BACKEND_URL } from "../config";
 
 
+export const EditIcon = ({ size }: SizeStyles) => {
 
-export const EditIcon = ({ size, onClick, open }: SizeStyles) => {
+
+    // function editMyContent() {
+    //     axios.put(`${BACKEND_URL}/api/v1/content`, {
+    //         data: {
+    //             contentId
+    //         },
+    //         headers: {
+    //             Authorization: localStorage.getItem("token") // <-- Replace `token` with your actual JWT
+    //         }
+    //     });
+    // }
+
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -12,6 +26,7 @@ export const EditIcon = ({ size, onClick, open }: SizeStyles) => {
             stroke-width="1.5"
             stroke="currentColor"
             className={sizeClasses[size]}
+
         >
             <path
                 stroke-linecap="round"

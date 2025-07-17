@@ -3,7 +3,8 @@ import { DeleteIcon } from "../icons/DeleteIcon";
 import { DocumentIcon } from "../icons/DocumentIcon";
 import { EditIcon } from "../icons/EditIcon";
 import { ShareIcon } from "../icons/ShareIcon";
-// import { EditContent } from "./EditContent";
+import { EditContent } from "./EditContent";
+
 // import { ViewIcon } from "../icons/ViewIcon";
 
 interface cardComponents {
@@ -24,12 +25,14 @@ interface cardComponents {
 
 export function Card(props: cardComponents) {
 
-    const contentId = props.id
-    console.log(contentId);
+    // const contentId = props.id
+    // console.log(contentId);
+    // console.log(props.title);
 
     const [isEditOpen, setIsEditOpen] = useState(false);
 
     return <>
+        <EditContent open={isEditOpen} onClose={() => setIsEditOpen(false)} />
         <div className="bg-white rounded-md shadow-lg w-56 h-72 mt-6">
             <div className="flex justify-between h-[15%] shadow-md items-center align-middle ">
 
@@ -72,7 +75,8 @@ export function Card(props: cardComponents) {
                     {new Date(props.date).toLocaleDateString()}
                 </p>
                 <div className="flex  w-[20%] justify-end font-bold cursor-pointer ">
-                    <EditIcon size="md" open={isEditOpen} onClick={() => setIsEditOpen(true)} />
+                    <EditIcon size="md" open={isEditOpen} onClick={open} onClose={() => setIsEditOpen(true)} />
+
                 </div>
 
                 {/* <EditContent open={isEditOpen} onClose={() => setIsEditOpen(false)} /> */}

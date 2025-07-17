@@ -4,7 +4,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../config";
 
 
-export const DeleteIcon = ({ size, contentId, onDeleteSuccess }: SizeStyles) => {
+export const DeleteIcon = ({ size, contentId }: SizeStyles) => {
 
 
     function deleteContent() {

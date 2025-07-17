@@ -36,6 +36,7 @@ export function Dashboard() {
         return () => clearInterval(interval);
     }, []);
 
+
     return (
         <>
             <CreateContent open={modalOpen} onClose={() => setModalOpen(false)} />
@@ -55,11 +56,13 @@ export function Dashboard() {
                     <SideBar />
                 </div>
 
+
+
                 <div className='flex flex-wrap gap-6 mx-auto justify-evenly w-[78%] ml-[1%]'>
-                    {contents.map(({ id, title, links, description, creationdate }, idx) => (
+                    {contents.map(({ contentid, title, links, description, creationdate }, idx) => (
                         <Card
                             key={idx}
-                            id={id}
+                            id={contentid}
                             title={title}
                             link={links}
                             description={description}
