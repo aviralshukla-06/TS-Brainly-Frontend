@@ -1,20 +1,20 @@
-import { useState } from "react";
+
 import { DeleteIcon } from "../icons/DeleteIcon";
 import { DocumentIcon } from "../icons/DocumentIcon";
 import { EditIcon } from "../icons/EditIcon";
 import { ShareIcon } from "../icons/ShareIcon";
-import { EditContent } from "./EditContent";
 
 // import { ViewIcon } from "../icons/ViewIcon";
 
 interface cardComponents {
-    id: number,
-    title: string,
-    link: string,
-    description?: string,
-    date: Date,
-    open?: any,
-    onClose?: any,
+    id: number;
+    title: string;
+    link: string;
+    description?: string;
+    date: Date;
+    open?: any;
+    onClose?: any;
+    onEdit?: () => void; // <-- Add this
     linkPreview: {
         image?: string;
         title?: string;
@@ -23,17 +23,21 @@ interface cardComponents {
 }
 
 
+
 export function Card(props: cardComponents) {
+
+    // Remove the unused onEdit declaration completely
+
 
     // const contentId = props.id
     // console.log(contentId);
     // console.log(props.title);
 
-    const [isEditOpen, setIsEditOpen] = useState(false);
+
 
     return <>
-        <EditContent open={isEditOpen} onClose={() => setIsEditOpen(false)} />
-        <div className="bg-white rounded-md shadow-lg w-56 h-72 mt-6">
+
+        <div className="bg-white rounded-md shadow-lg w-56 h-72 mx-4 mt-6 border border-black">
             <div className="flex justify-between h-[15%] shadow-md items-center align-middle ">
 
                 <div className="flex align-middle items-center w-[70%] justify-evenly pr-2 ">
@@ -61,23 +65,27 @@ export function Card(props: cardComponents) {
                         No Preview Available
                     </div>
                 )}
-                {/* <p className="text-xs mt-1 text-center line-clamp-2">
-                {props.linkPreview?.title || props.link}
-            </p> */}
+
             </div>
 
-            <div className="flex justify-between h-[21%] px-1  items-center font-serif leading-4 align-middle ">
+            <div className="flex justify-between h-[21%] pl-3  items-center font-serif leading-4 align-middle ">
                 {props.description}
             </div>
-            <div className="font-serif text-[14px]  flex justify-around ">
+            <div className="font-serif text-[14px] flex justify-around items-center ">
                 <p>
                     <span>Created on: </span>
                     {new Date(props.date).toLocaleDateString()}
                 </p>
-                <div className="flex  w-[20%] justify-end font-bold cursor-pointer ">
-                    <EditIcon size="md" open={isEditOpen} onClick={open} onClose={() => setIsEditOpen(true)} />
-
-                </div>
+                {/* <div className="flex  w-[20%] justify-end font-bold cursor-pointer "> */}
+                {props.onEdit && (
+                    <button
+                        onClick={props.onEdit}
+                        className="flex w-[20%] font-bold cursor-pointer justify-end text-sm items-center mb-3 underline mt-2"
+                    >
+                        <EditIcon size={"lg"} />
+                    </button>
+                )}
+                {/* </div> */}
 
                 {/* <EditContent open={isEditOpen} onClose={() => setIsEditOpen(false)} /> */}
             </div>
