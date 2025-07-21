@@ -4,8 +4,6 @@ import { DocumentIcon } from "../icons/DocumentIcon";
 import { EditIcon } from "../icons/EditIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 
-// import { ViewIcon } from "../icons/ViewIcon";
-
 interface cardComponents {
     id: number;
     title: string;
