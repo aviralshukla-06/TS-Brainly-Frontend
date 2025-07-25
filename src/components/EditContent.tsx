@@ -65,16 +65,17 @@ interface inputProp {
     placeholder: string;
     ref?: any;
     onChange?: () => void;
+    className?: string
 }
 
-function Input({ onChange, placeholder, ref }: inputProp) {
+function Input({ onChange, placeholder, ref, className }: inputProp) {
     return (
         <div>
             <input
                 ref={ref}
                 placeholder={placeholder}
                 type="text"
-                className="px-4 py-2 font-medium text-black border-2 border-black rounded-md"
+                className={` ${className} px-4 py-2 font-medium text-black border-2 border-black rounded-md`}
                 onChange={onChange}
             />
         </div>

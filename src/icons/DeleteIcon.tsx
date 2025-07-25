@@ -9,14 +9,17 @@ export const DeleteIcon = ({ size, contentId }: SizeStyles) => {
 
     function deleteContent() {
 
-        axios.delete(`${BACKEND_URL}/api/v1/content`, {
-            data: {
-                contentId
-            },
+        axios.request({
+            method: 'DELETE',
+            url: `${BACKEND_URL}/api/v1/content`,
             headers: {
-                Authorization: localStorage.getItem("token") // <-- Replace `token` with your actual JWT
+                Authorization: localStorage.getItem("token") || ""
+            },
+            data: {
+                contentId: contentId
             }
         });
+
     }
 
     return (

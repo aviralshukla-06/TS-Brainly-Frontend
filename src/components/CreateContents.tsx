@@ -5,9 +5,9 @@ import axios from "axios";
 
 export function CreateContent({ open, onClose }) {
 
-    const linksRef = useRef<HTMLInputElement>();
-    const titleRef = useRef<HTMLInputElement>();
-    const descriptionRef = useRef<HTMLInputElement>();
+    const linksRef = useRef<HTMLInputElement>(null);
+    const titleRef = useRef<HTMLInputElement>(null);
+    const descriptionRef = useRef<HTMLInputElement>(null);
 
     async function addContent() {
         const title = titleRef.current?.value;
@@ -68,10 +68,11 @@ interface inputProp {
     placeholder: string,
     ref?: any
     onChange?: () => void
+    className?: string
 }
 
-function Input({ onChange, placeholder, ref }: inputProp) {
+function Input({ onChange, placeholder, ref, className }: inputProp) {
     return <div>
-        <input ref={ref} placeholder={placeholder} type={"text"} className="px-4 py-2 font-medium text-black border-2 border-black rounded-md flex justify-center items-center" onChange={onChange}></input>
+        <input ref={ref} placeholder={placeholder} type={"text"} className={`${className} px-4 py-2 font-medium text-black border-2 border-black rounded-md flex justify-center items-center`} onChange={onChange}></input>
     </div>
 }

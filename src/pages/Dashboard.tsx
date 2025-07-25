@@ -9,18 +9,30 @@ import { ShareIcon } from '../icons/ShareIcon';
 import { BACKEND_URL } from '../config';
 import { EditContent } from '../components/EditContent';
 
+type Content = {
+    contentid: number,
+    title: string,
+    links: string,
+    description: string,
+    user_id?: number,
+    creationdate?: Date
+}
+
+type ContentResponse = {
+    response: Content[];
+}
 
 export function Dashboard() {
     const [modalOpen, setModalOpen] = useState(true);
     const [editModalOpen, setEditModalOpen] = useState(false);
-    const [selectedContent, setSelectedContent] = useState(null);
+    const [selectedContent, setSelectedContent] = useState<Content | null>(null);
 
-    const [contents, setContents] = useState([]);
+    const [contents, setContents] = useState<Content[]>([]);
 
     useEffect(() => {
         async function refresh() {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/v1/content`, {
+                const response = await axios.get<ContentResponse>(`${BACKEND_URL}/api/v1/content`, {
                     headers: {
                         "Authorization": localStorage.getItem("token")
                     }

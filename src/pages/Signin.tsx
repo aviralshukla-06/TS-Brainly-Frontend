@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export function Signin() {
 
-    const usernameRef = useRef<HTMLInputElement>();
-    const passwordRef = useRef<HTMLInputElement>();
+    const usernameRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
 
     const nav = useNavigate()
 
@@ -65,11 +65,12 @@ export function Signin() {
 
 interface inputProp {
     placeholder: string,
-    ref?: any
+    ref?: any,
+    className?: string,
 }
 
-function Input({ placeholder, ref }: inputProp) {
+function Input({ placeholder, ref, className }: inputProp) {
     return <div>
-        <input ref={ref} placeholder={placeholder} type={"text"} className="px-4 py-2 font-medium text-black border-2 border-black rounded-md flex justify-center items-center"></input>
+        <input ref={ref} placeholder={placeholder} type={"text"} className={`${className} px-4 py-2 font-medium text-black border-2 border-black rounded-md flex justify-center items-center1`}></input>
     </div>
 }
